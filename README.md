@@ -69,3 +69,9 @@ Run these steps in order from a terminal.
 
 - `npm run check`: checks your `.env` and that you can reach the Toolshop API.
 - `npm test`: runs the Playwright tests in `tests/`.
+
+
+## Day 6: TypeScript basics and profile validator
+
+- `src/ts-basics/`: one file per TypeScript topic from the tutorial (first program, tuples, functions, objects, type aliases, union types, optional chaining). Run any of them with `npx tsx src/ts-basics/<file>.ts`.
+- `src/profile-validator.ts`: a `UserProfile` type with an optional `settings` object, three test users and an `isNotified` function that returns `false` when settings or notifications are missing, without crashing. Run it with `npx tsx src/profile-validator.ts`.
