@@ -92,3 +92,17 @@ Expected: 7 tests pass.
 
 ### Not included
 I did not write the optional Cucumber scenario. `features/cart.feature` is written in Given/When/Then but is not connected to step definitions.
+
+## Week 2 capstone
+
+Tests in `tests/week2capstone/`, each named by its case ID:
+- `c1-search-by-name.spec.ts`: **C1 Search by name (UI)**, on the `SearchPage` page object. Searches for "pliers" and checks that at least one product shows and that no product name is missing "pliers" (no hard-coded count).
+- `c4-add-to-cart.spec.ts`: **C4 Add to a cart (API)**. Gets a fresh product id, creates a cart (201), adds the product (200) and checks the cart holds that product with quantity 1. A `try/finally` always deletes the cart. Also includes **C5 Unknown cart** (404) as an extra check.
+
+Flakiness drill in `tests/drill/`:
+- `index.html` (from the trainer) shows "Saved" after a random 0 to 1 second delay.
+- `drill.spec.ts` waits for the message with `toHaveText`. The unfixed version (a fixed 500 ms wait plus a plain check) passed 12 of 20 runs. The fixed version passed 20 of 20.
+
+Run only the capstone tests: `npx playwright test tests/week2capstone`
+Run the drill 20 times: `npx playwright test tests/drill --repeat-each=20`
+Run everything: `npm test` (expected: all tests pass)
