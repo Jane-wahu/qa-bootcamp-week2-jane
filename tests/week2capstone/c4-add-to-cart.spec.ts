@@ -8,6 +8,9 @@ async function getFreshProductId(request: APIRequestContext): Promise<string> {
   const response = await request.get(`${API}/products`, { headers });
   expect(response.status()).toBe(200);
   const body = await response.json();
+  // Day 8 feedback: check the list's shape, not a hard-coded total
+  expect(body.data.length).toBeGreaterThan(0);
+  expect(body.data[0]).toHaveProperty('id');
   return body.data[0].id;
 }
 
