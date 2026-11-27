@@ -9,10 +9,7 @@ test('Flakiness drill: Save shows "Saved"', async ({ page }) => {
   await page.goto(drillPage);
   await page.getByRole('button', { name: 'Save' }).click();
 
-  // UNFIXED: wait a fixed time (my guess), then read the message once
-  await page.waitForTimeout(500);
-  const message = await page.locator('#status').textContent();
-
-  // Plain check: it does not retry
-  expect(message).toBe('Saved');
+  // FIXED: wait for the condition, not a guessed time.
+  // toHaveText retries until the message says "Saved" (up to 5 seconds).
+  await expect(page.locator('#status')).toHaveText('Saved');
 });
